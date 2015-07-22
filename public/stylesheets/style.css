@@ -10,10 +10,13 @@ header, nav, section { background: #eee; text-align: center; }
 footer               { background: #eee; text-align: center; }
 footer a             { padding: 0 5px; }
 nav span             { margin: 0px 10px 0px 0px; }
+button, input[type="submit"]
+										 { padding: 2px; -webkit-appearance: push-button; -webkit-user-select: none; white-space: pre; }
 
 form label					 { display: block; }
 label[for="search"]	 { display: inline; }
 #questions_table		 { margin: 5px auto; text-align: left; }
+#all_questions			 { display: block; margin-top: 5px; }
 
 #author_img          { display: block; margin: 10px auto; height: 150px; }
 #author_video 			 { width: 400px; }
