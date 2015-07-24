@@ -2,8 +2,7 @@
 body                 { font: 16px Georgia, serif; }
 
 #page-wrap           { margin: 2% auto; color: white; }
-#page-wrap > .main   { border: 1px solid #999; padding: 1%;
-	                     margin-bottom: 1px; color: black; }
+.main   { border: 1px solid #999; padding: 1%; margin-bottom: 1px; color: black; }
 
 section > div        { padding: 20px; }
 header, nav, section { background: #eee; text-align: center; }
@@ -16,11 +15,14 @@ button, input[type="submit"]
 #errorMsgs           { display: inline-block; text-align: left; color: #f61; font-size: smaller; }
 
 form label					 { display: block; }
-label[for="search"]	 { display: inline; }
+label[for="search"], label[for="tema_search"]
+										 { display: inline; }
 #questions_table		 { margin: 5px auto; text-align: left; }
 #all_questions			 { display: block; margin-top: 5px; }
 
-#preg, #resp				 { margin-bottom: 5px; }
+#preg, #resp, #tema	 { margin-bottom: 5px; width: 121px; }
+#tema, #tema_search	 { -webkit-appearance: menulist-button; }
+#tema_column				 { font-size: 14px; }
 
 #author_img          { display: block; margin: 10px auto; height: 150px; }
 #author_video 			 { width: 400px; }

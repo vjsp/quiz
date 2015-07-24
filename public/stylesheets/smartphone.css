@@ -2,9 +2,14 @@ body                           { background: #333; }
 
 #page-wrap:after               { content: "Smartphone Layout"; }
 
-h2 span, section h3, label.rem { display: none; }
+h2 span, section h3, label.rem, #tema_column
+                               { display: none; }
 body                           { font-size: xx-large; }
-input, button                  { font-size: x-large; }
+input, button , select, td     { font-size: x-large; }
 footer, h4                     { font-size: large; }
+form input[value="Buscar"]      { display: block; margin: 5px auto 0; }
 
-#author_video 			            { width: 100%; }
+#search, #tema_search, #preg, #resp, #tema
+                               { width: 260px; }
+
+#author_video 			           { width: 100%; }

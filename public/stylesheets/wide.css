@@ -1,8 +1,9 @@
-body { background: #999; }
+body             { background: #999; }
 
 #page-wrap:after { content: "Wide Layout"; }
 
-nav       { float: left; width: 15%; height: 200px ; text-align: left; }
-nav span  { margin: 0px 100px 0px 0px; }
-section   { float: right; width: 80%; min-height: 200px ; }
-footer    { clear: both;  display: block; }
+nav              { width: 15%; text-align: left; }
+nav span         { margin: 0px 100px 0px 0px; }
+section          { margin-left: auto; width: 80%; min-height: 200px; }
+
+#main_panel      { display: -webkit-box; display: -moz-box; display: -ms-flexbox; display: -webkit-flex; display: flex; }
