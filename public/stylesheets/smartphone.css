@@ -7,9 +7,8 @@ h2 span, section h3, label.rem, #tema_column
 body                           { font-size: xx-large; }
 input, button , select, td     { font-size: x-large; }
 footer, h4                     { font-size: large; }
-form input[value="Buscar"]      { display: block; margin: 5px auto 0; }
-
-#search, #tema_search, #preg, #resp, #tema
+select, input[type="text"], input[type="password"]
                                { width: 260px; }
+form input[value="Buscar"]     { display: block; margin: 5px auto 0; }
 
 #author_video 			           { width: 100%; }
