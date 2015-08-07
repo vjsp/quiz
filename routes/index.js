@@ -7,7 +7,10 @@ var sessionController = require('../controllers/session_controller');
 
 /* Página de entrada (home page). */
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Quiz', errors: []});
+  var expiredSessionError = req.session.expiredSessionError || null;
+  req.session.expiredSessionError = null;
+
+  res.render('index', { title: 'Quiz', errors: [], expiredSessionError: expiredSessionError});
 });
 
 // Página de autor

@@ -27,11 +27,28 @@ app.use(session());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(methodOverride('_method'));
 
+// Auto-logout
+app.use(function(req, res, next) {
+  // Máximo tiempo inactivo en ms
+  var inactiveTime = 120000;
+
+  if (req.session.user) {
+    // Si se ha sobrepasado ese tiempo, la sesión expira
+    if (req.session.user.lastInteraction && ((Date.now() - req.session.user.lastInteraction) > inactiveTime)) {
+      req.session.expiredSessionError = {'message': 'Su sesión ha expirado'};
+      delete req.session.user;
+    } else {
+      req.session.user.lastInteraction = Date.now();
+    }
+  }
+  next();
+});
+
 // Helpers dinamicos:
 app.use(function(req, res, next) {
 
   // guardar path en session.redir para despues de login
-  if (!req.path.match(/\/login|\/logout/)) {
+  if (req.method === 'GET' && !req.path.match(/\/login|\/logout/)) {
     req.session.redir = req.path;
   }
 

@@ -16,11 +16,17 @@ exports.load = function(req, res, next, commentId) {
 
 // GET /quizes/:quizId/comments/new
 exports.new = function(req, res) {
-  res.render('comments/new.ejs', {quizid: req.params.quizId, errors: []});
+  var expiredSessionError = req.session.expiredSessionError || null;
+  req.session.expiredSessionError = null;
+
+  res.render('comments/new', {quizid: req.params.quizId, errors: [], expiredSessionError: expiredSessionError});
 };
 
 // POST /quizes/:quizId/comments
 exports.create = function(req, res) {
+  var expiredSessionError = req.session.expiredSessionError || null;
+  req.session.expiredSessionError = null;
+
   var comment = models.Comment.build(
     { texto: req.body.comment.texto,
       QuizId: req.params.quizId
@@ -31,11 +37,7 @@ exports.create = function(req, res) {
     .then(
       function(err){
         if (err) {
-          res.render('comments/new.ejs', {
-            quizid: req.params.quizId,
-            comment: comment,
-            errors: err.errors
-          });
+          res.render('comments/new', {quizid: req.params.quizId, comment: comment, errors: err.errors, expiredSessionError: expiredSessionError});
         } else {
           comment // save: guarda en DB campo texto de comment
           .save()

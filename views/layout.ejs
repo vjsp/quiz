@@ -21,7 +21,7 @@
     <%}else{%>
       <span class="right"> <%=session.user.username%> <a href="/logout">Logout</a></span>
     <%}%>
-    
+
     <h2>Quiz<span>: el juego de las preguntas</span></h2>
   </header>
 
@@ -33,8 +33,15 @@
     </nav>
 
     <section class="main" id="s1">
+
+      <% if (expiredSessionError) { %>
+        <span class="error" id='expiredSession'>
+          <%= expiredSessionError.message %>
+        </span><br/>
+      <% } %>
+
       <% if (errors.length) { %>
-        <span id='errorMsgs'>
+        <span class="error" id='errorMsgs'>
           Corregir errores:<br/>
           <% for (var i in errors) { %>
              <span> <%= errors[i].message %> </span><br/>

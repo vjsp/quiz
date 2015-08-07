@@ -22,12 +22,15 @@ label[for="search"], label[for="tema_search"]
 
 .right 				 			 { float: right; }
 
-#errorMsgs           { display: inline-block; text-align: left; color: #f61; font-size: smaller; }
+.error           		 { display: inline-block; text-align: left; color: #f61; font-size: smaller; }
+#expiredSession			 { margin-bottom: 3px; }
+
+#delete_form				 { margin: 0; }
 
 #questions_table		 { margin: 5px auto; text-align: left; }
 #all_questions			 { display: block; margin-top: 5px; }
 
-#comments						 { margin-top: 3px;}
+#comments						 { margin-top: 3px; }
 
 #login, #password		 { width: auto; }
 

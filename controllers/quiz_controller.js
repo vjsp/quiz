@@ -21,6 +21,9 @@ exports.load = function(req, res, next, quizId) {
 
 // GET /quizes?search=texto_a_buscar
 exports.index = function(req, res) {
+  var expiredSessionError = req.session.expiredSessionError || null;
+  req.session.expiredSessionError = null;
+
   var texto_a_buscar = req.query.search || '';
   var tema_a_buscar = req.query.tema_search || '';
   var where = {order: 'pregunta ASC'};
@@ -31,23 +34,29 @@ exports.index = function(req, res) {
   }
   models.Quiz.findAll(where).then(
     function(quizes) {
-      res.render('quizes/index.ejs', {quizes: quizes, search: texto_a_buscar, tema_search: tema_a_buscar, errors: [], temas: temas});
+      res.render('quizes/index.ejs', {quizes: quizes, search: texto_a_buscar, tema_search: tema_a_buscar, errors: [], expiredSessionError: expiredSessionError, temas: temas});
     }
   ).catch(function(error) {next(error)})
 };
 
 // GET /quizes/:id
 exports.show = function(req, res) {
-    res.render('quizes/show', {quiz: req.quiz, errors: []});
+  var expiredSessionError = req.session.expiredSessionError || null;
+  req.session.expiredSessionError = null;
+
+  res.render('quizes/show', {quiz: req.quiz, errors: [], expiredSessionError: expiredSessionError});
 };
 
 // GET /quizes/:id/answer
 exports.answer = function(req, res) {
+  var expiredSessionError = req.session.expiredSessionError || null;
+  req.session.expiredSessionError = null;
+
   var resultado = 'Incorrecto';
   if (req.query.respuesta === req.quiz.respuesta) {
     resultado = 'Correcto';
   }
-  res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado, errors: []});
+  res.render('quizes/answer', {quiz: req.quiz, respuesta: resultado, errors: [], expiredSessionError: expiredSessionError});
 };
 
 // GET /quizes/new
@@ -55,7 +64,7 @@ exports.new = function(req, res) {
   var quiz = models.Quiz.build( // crea objeto quiz
     {pregunta: "", respuesta: "", tema: ""}
   );
-  res.render('quizes/new', {quiz: quiz, errors: [], temas: temas});
+  res.render('quizes/new', {quiz: quiz, errors: [], expiredSessionError: null, temas: temas});
 };
 
 // POST /quizes/create
@@ -67,7 +76,7 @@ exports.create = function(req, res) {
   .then(
     function(err){
       if (err) {
-        res.render('quizes/new', {quiz: quiz, errors: err.errors, temas: temas});
+        res.render('quizes/new', {quiz: quiz, errors: err.errors, expiredSessionError: null, temas: temas});
       } else {
         quiz // save: guarda en DB campos pregunta, respuesta y tema de quiz
         .save({fields: ["pregunta", "respuesta", "tema"]})
@@ -81,7 +90,7 @@ exports.create = function(req, res) {
 exports.edit = function(req, res) {
   var quiz = req.quiz;  // req.quiz: autoload de instancia de quiz
 
-  res.render('quizes/edit', {quiz: quiz, errors: [], temas: temas});
+  res.render('quizes/edit', {quiz: quiz, errors: [], expiredSessionError: null, temas: temas});
 };
 
 // PUT /quizes/:id
@@ -95,7 +104,7 @@ exports.update = function(req, res) {
   .then(
     function(err){
       if (err) {
-        res.render('quizes/edit', {quiz: req.quiz, errors: err.errors, temas: temas});
+        res.render('quizes/edit', {quiz: req.quiz, errors: err.errors, expiredSessionError: null, temas: temas});
       } else {
         req.quiz     // save: guarda campos pregunta, respuesta y tema en DB
         .save( {fields: ["pregunta", "respuesta", "tema"]})
@@ -114,5 +123,8 @@ exports.destroy = function(req, res) {
 
 // GET /author
 exports.credits = function(req, res) {
-  res.render('author', {author: 'Víctor Julio Sánchez Pollo', image: '/images/vjsp.jpg', video: '/videos/vjsp.mp4', errors: []});
+  var expiredSessionError = req.session.expiredSessionError || null;
+  req.session.expiredSessionError = null;
+
+  res.render('author', {author: 'Víctor Julio Sánchez Pollo', image: '/images/vjsp.jpg', video: '/videos/vjsp.mp4', errors: [], expiredSessionError: expiredSessionError});
 }
