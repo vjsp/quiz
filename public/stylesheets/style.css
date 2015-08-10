@@ -2,14 +2,18 @@
 body                 { font: 16px Georgia, serif; }
 
 #page-wrap           { margin: 2% auto; color: white; }
-.main   { border: 1px solid #999; padding: 1%; margin-bottom: 1px; color: black; }
+.main   						 { border: 1px solid #999; padding: 1%; margin-bottom: 1px; color: black; }
 
-section > div        { padding: 20px; }
+section > div        { padding: 18px; }
 header, nav, section { background: #eee; text-align: center; }
 footer               { background: #eee; text-align: center; }
 footer a             { padding: 0 5px; }
 nav span             { margin: 0px 10px 0px 0px; }
 form								 { margin-bottom: 5px; }
+
+table								 { margin: 5px auto; text-align: left; }
+td 									 { padding: 0 2px; white-space: nowrap; }
+table td span				 { white-space: initial; word-break: break-word; }
 
 button, input[type="submit"]
 										 { padding: 2px; -webkit-appearance: push-button; -webkit-user-select: none; white-space: pre; }
@@ -19,6 +23,8 @@ select, input[type="text"], input[type="password"]
 form label					 { display: block; }
 label[for="search"], label[for="tema_search"]
 										 { display: inline; }
+label[for="respuesta"]
+										 { word-break: break-word; }
 
 .right 				 			 { float: right; }
 
@@ -27,7 +33,6 @@ label[for="search"], label[for="tema_search"]
 
 #delete_form				 { margin: 0; }
 
-#questions_table		 { margin: 5px auto; text-align: left; }
 #all_questions			 { display: block; margin-top: 5px; }
 
 #comments						 { margin-top: 3px; }
@@ -42,3 +47,7 @@ label[for="search"], label[for="tema_search"]
 
 #author_img          { display: block; margin: 10px auto; height: 150px; }
 #author_video 			 { width: 400px; }
+
+#statistics_table td { white-space: initial; vertical-align: bottom; }
+#statistics_table td:nth-child(2)
+										 { text-align: right; word-break: normal; }

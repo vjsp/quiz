@@ -1,0 +1,32 @@
+<h3>Estadísticas:</h3>
+
+<table id="statistics_table">
+  <tr>
+    <td>Preguntas: </td>
+		<td><%= statistics.quizes.toFixed(2) %></td>
+	</tr>
+	<tr>
+		<td>Comentarios totales: </td>
+		<td><%= statistics.comments.toFixed(2) %></td>
+	</tr>
+	<tr>
+		<td>Comentarios publicados: </td>
+		<td><%= statistics.publishedComments.toFixed(2) %></td>
+	</tr>
+	<tr>
+		<td>Comentarios sin publicar: </td>
+		<td><%= (statistics.comments - statistics.publishedComments).toFixed(2) %></td>
+	</tr>
+	<tr>
+		<td>Comentarios por pregunta: </td>
+		<td><%= (statistics.comments / statistics.quizes).toFixed(2) %></td>
+	</tr>
+  <tr>
+		<td>Preguntas con comentarios: </td>
+		<td><%= statistics.commentedQuizes.toFixed(2) %></td>
+	</tr>
+  <tr>
+		<td>Preguntas sin comentarios: </td>
+		<td><%= (statistics.quizes - statistics.commentedQuizes).toFixed(2) %></td>
+	</tr>
+</table>

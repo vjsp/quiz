@@ -11,6 +11,17 @@ module.exports = function(sequelize, DataTypes) {
       	type: DataTypes.BOOLEAN,
       	defaultValue: false
       }
+    },
+    // Se añaden los métodos necesarios para la obtención de las estadísticas
+    // de los comentarios
+    { classMethods: {
+        countPublished: function() {
+          return this.count({where: {publicado: true}});
+        },
+        countCommentedQuizes: function() {
+          return this.aggregate('QuizId', 'count', {distinct: true});
+        }
+      }
     }
   );
-}
+};

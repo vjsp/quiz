@@ -6,6 +6,7 @@ h2 span, section h3, label.rem, #tema_column
                                { display: none; }
 body                           { font-size: xx-large; }
 input, button , select, td     { font-size: x-large; }
+td                             { padding: 0; }
 footer, h4                     { font-size: large; }
 select, input[type="text"], input[type="password"], #search, #tema_search
                                { width: 260px; }

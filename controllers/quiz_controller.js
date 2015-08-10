@@ -19,7 +19,7 @@ exports.load = function(req, res, next, quizId) {
   }).catch(function(error) {next(error)});
 };
 
-// GET /quizes?search=texto_a_buscar
+// GET /quizes?search=texto_a_buscar&tema_search=tema_a_buscar
 exports.index = function(req, res) {
   var expiredSessionError = req.session.expiredSessionError || null;
   req.session.expiredSessionError = null;

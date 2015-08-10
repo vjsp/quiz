@@ -13,7 +13,7 @@
 <table id="questions_table">
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
-      <td>- <a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
+      <td>- <span><a href="quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a><s/span></td>
       <td  id="tema_column">(<%= quizes[i].tema %>)</td>
       <%if(session.user){%>
         <td><a href="quizes/<%= quizes[i].id %>/edit"><button>Editar</button></a></td>
