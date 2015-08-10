@@ -12,4 +12,6 @@ select, input[type="text"], input[type="password"], #search, #tema_search
                                { width: 260px; }
 form input[value="Buscar"]     { display: block; margin: 5px auto 0; }
 
+#login, #password		           { width: 315px; }
+
 #author_video 			           { width: 100%; }

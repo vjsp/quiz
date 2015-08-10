@@ -25,7 +25,6 @@ exports.new = function(req, res) {
 // POST /quizes/:quizId/comments
 exports.create = function(req, res) {
   var expiredSessionError = req.session.expiredSessionError || null;
-  req.session.expiredSessionError = null;
 
   var comment = models.Comment.build(
     { texto: req.body.comment.texto,
@@ -37,6 +36,7 @@ exports.create = function(req, res) {
     .then(
       function(err){
         if (err) {
+          req.session.expiredSessionError = null;
           res.render('comments/new', {quizid: req.params.quizId, comment: comment, errors: err.errors, expiredSessionError: expiredSessionError});
         } else {
           comment // save: guarda en DB campo texto de comment

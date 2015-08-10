@@ -4,7 +4,7 @@ body                 { font: 16px Georgia, serif; }
 #page-wrap           { margin: 2% auto; color: white; }
 .main   						 { border: 1px solid #999; padding: 1%; margin-bottom: 1px; color: black; }
 
-section > div        { padding: 18px; }
+section > div        { padding: 14px; }
 header, nav, section { background: #eee; text-align: center; }
 footer               { background: #eee; text-align: center; }
 footer a             { padding: 0 5px; }
@@ -37,7 +37,7 @@ label[for="respuesta"]
 
 #comments						 { margin-top: 3px; }
 
-#login, #password		 { width: auto; }
+#login, #password		 { width: 150px; }
 
 #search, #tema_search
 										 { width: 120px; }
